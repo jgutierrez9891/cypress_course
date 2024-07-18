@@ -4,6 +4,13 @@ describe('My First Test', () => {
   
       cy.get('.search-keyword').type("Brocolli")
       cy.get('.search-button').click()
-      cy.get('products ')
+      cy.contains('ADD TO CART').click()
+      cy.get('.cart-icon').click()
+      cy.contains('PROCEED TO CHECKOUT').click()
+      //Assert cart info
+      cy.get('.promoBtn').should('include.text','Apply')
+      cy.get('.discountAmt').should('include.text',120)
+      //Complete order
+      cy.contains('Place Order').click()
     })
   })
